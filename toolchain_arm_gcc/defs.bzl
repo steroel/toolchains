@@ -9,3 +9,7 @@ def install_toolchain_arm_gcc():
         sha256 = "8c5acd5ae567c0100245b0556941c237369f210bceb196edfe5a2e7532c60326", 
         build_file = "//toolchain_arm_gcc:arm_gcc.BUILD",
     )
+
+    native.register_toolchain(
+        "@arm_gcc//:toolchain",
+    )
