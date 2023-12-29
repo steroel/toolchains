@@ -27,11 +27,9 @@ cc_toolchain_config(
         "-isystem", "external/arm_gcc/arm-none-eabi/include/c++/11.2.1/arm-none-eabi",
         "-isystem", "external/arm_gcc/arm-none-eabi/include/c++/11.2.1",
         "-isystem", "external/arm_gcc/arm-none-eabi/include",
-        "-isystem", "external/arm_gcc/arm-none-eabi/11.2.1/include",
+        "-isystem", "external/arm_gcc/lib/gcc/arm-none-eabi/11.2.1/include",
     ],
-    link_flags = [
-        "--specs=nosys.specs",
-    ]
+    link_flags = ["--specs=nosys.specs",]
 )
 
 toolchain(
@@ -47,19 +45,19 @@ toolchain(
     toolchain_type = "@rules_cc//cc:toolchain_type",
     toolchain = ":cc_toolchain",
 
-    tags = [""],
-    target_settings = [],
-    toolchain = "",
-    visibility = [""],
+    # tags = [""],
+    # target_settings = [],
+    # toolchain = "",
+    # visibility = [""],
 )
 
 filegroup(
     name = "all",
-    src = glob(["**/*"]),
+    srcs = glob(["**/*",]),
 )
 
 cc_toolchain(
-    name = "cc_tolchain",
+    name = "cc_toolchain",
     all_files = ":all",
     ar_files = ":all",
     as_files = ":all",
@@ -70,7 +68,7 @@ cc_toolchain(
     strip_files = ":all",
     dynamic_runtime_lib = ":all",
     static_runtime_lib = ":all",
-    toolchain_config = "cc_toolchain_config",
+    toolchain_config = ":cc_toolchain_config",
 
     # compiler = "",
     # compiler_files_without_includes = "",

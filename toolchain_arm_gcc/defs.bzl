@@ -10,6 +10,6 @@ def install_toolchain_arm_gcc():
         build_file = "//toolchain_arm_gcc:arm_gcc.BUILD",
     )
 
-    native.register_toolchain(
+    native.register_toolchains(
         "@arm_gcc//:toolchain",
     )
